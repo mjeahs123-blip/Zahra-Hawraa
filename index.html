@@ -1,268 +1,423 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>عيد ميلاد جود 🎀</title>
-
+    <title>RSVP - Birthday Celebration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Tajawal:wght@400;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-stripe: #d2c4b0;
+            --bg-light: #fdfbf7;
+            --brown-dark: #5c4033;
+            --brown-accent: #8b5a2b;
+            --card-shadow: rgba(0, 0, 0, 0.08);
+        }
+
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #fff7f8;
-            color: #5b454b;
-            text-align: center;
-        }
-
-        .hero {
-            min-height: 100vh;
-            padding: 60px 20px;
+            font-family: 'Quicksand', 'Tajawal', sans-serif;
+            background-color: #f7f4ee;
+            color: var(--brown-dark);
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
+            min-height: 100vh;
+            padding: 20px;
         }
 
-        .balloons {
-            font-size: 45px;
-            margin-bottom: 20px;
-        }
-
-        h1 {
-            font-size: 48px;
-            margin: 10px 0;
-            color: #c77b8a;
-        }
-
-        h2 {
-            font-size: 24px;
-            font-weight: normal;
-            margin: 10px 0 30px;
-        }
-
-        .details {
-            background: white;
-            padding: 25px;
-            border-radius: 25px;
-            max-width: 450px;
+        .container {
+            background-color: var(--bg-light);
             width: 100%;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            margin-bottom: 30px;
+            max-width: 460px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--card-shadow);
+            border: 2px solid #e8e0d5;
+            text-align: center;
+            position: relative;
         }
 
-        .detail {
-            margin: 15px 0;
-            font-size: 18px;
-        }
-
-        .rsvp {
-            background: #c77b8a;
-            color: white;
-            border: none;
-            padding: 15px 35px;
-            border-radius: 30px;
-            font-size: 18px;
+        /* Language Switcher Button */
+        .lang-switch-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1.5px solid var(--brown-accent);
+            color: var(--brown-dark);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.85rem;
             cursor: pointer;
+            z-index: 10;
+            transition: 0.3s;
+            backdrop-filter: blur(4px);
         }
 
-        .rsvp:hover {
-            opacity: 0.85;
+        html[dir="rtl"] .lang-switch-btn {
+            right: auto;
+            left: 15px;
         }
 
-        .form-container {
-            display: none;
-            background: white;
-            padding: 30px;
-            border-radius: 25px;
-            max-width: 450px;
-            width: 100%;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            margin-top: 20px;
+        .lang-switch-btn:hover {
+            background-color: var(--brown-accent);
+            color: #fff;
         }
 
-        .form-container h3 {
-            color: #c77b8a;
-            font-size: 25px;
+        /* Header Area with Stripes */
+        .header-container {
+            background: repeating-linear-gradient(
+                90deg,
+                #fdfbf7,
+                #fdfbf7 18px,
+                var(--bg-stripe) 18px,
+                var(--bg-stripe) 36px
+            );
+            padding: 45px 20px 30px 20px;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            border-bottom: 3px solid #c2b29d;
         }
 
-        input,
-        select,
-        textarea {
-            width: 100%;
-            padding: 14px;
-            margin: 8px 0 15px;
-            border: 1px solid #eadadd;
-            border-radius: 12px;
-            font-size: 16px;
-            font-family: inherit;
+        .subtitle {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--brown-accent);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .title-eng {
+            font-family: 'Fredoka', cursive;
+            font-size: 2.4rem;
+            color: var(--brown-dark);
+            line-height: 1.2;
+        }
+
+        /* Content Area */
+        .content {
+            padding: 25px 25px 30px 25px;
+        }
+
+        .guest-greeting {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--brown-dark);
+            margin-bottom: 15px;
+            background-color: #f2e9dc;
+            padding: 8px 18px;
+            border-radius: 14px;
+            display: inline-block;
+        }
+
+        .event-details {
+            margin: 15px 0 20px 0;
+            background-color: #f7f2ea;
+            padding: 16px;
+            border-radius: 16px;
+            border: 1px dashed var(--bg-stripe);
+        }
+
+        .event-details p {
+            font-size: 0.95rem;
+            margin: 6px 0;
+            color: #4a3728;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 16px;
+            text-align: left;
+        }
+
+        html[dir="rtl"] .form-group {
+            text-align: right;
         }
 
         label {
             display: block;
-            text-align: right;
-            margin-top: 10px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 6px;
+            color: var(--brown-dark);
         }
 
-        .submit {
-            width: 100%;
-            padding: 14px;
-            background: #c77b8a;
-            color: white;
-            border: none;
-            border-radius: 25px;
-            font-size: 17px;
+        .radio-group {
+            display: flex;
+            gap: 12px;
+        }
+
+        .radio-option {
+            flex: 1;
+            border: 1.5px solid #dcd1c4;
+            padding: 10px;
+            border-radius: 12px;
+            text-align: center;
             cursor: pointer;
+            background: #fff;
+            transition: 0.2s;
+            font-size: 0.9rem;
         }
 
-        #success {
+        .radio-option input {
             display: none;
-            margin-top: 20px;
-            font-size: 18px;
-            color: #7b5961;
         }
 
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 38px;
-            }
+        .radio-option.active {
+            background-color: var(--brown-accent);
+            color: #fff;
+            border-color: var(--brown-accent);
+        }
 
-            h2 {
-                font-size: 20px;
-            }
+        /* Dress Code Conditional Box */
+        .dress-code-container {
+            margin-top: 15px;
+            background-color: #fdf8f0;
+            border: 2px dashed var(--brown-accent);
+            border-radius: 16px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .dress-code-text {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: var(--brown-dark);
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .dress-code-img {
+            max-width: 130px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background-color: var(--brown-dark);
+            color: #fff;
+            border: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            font-family: inherit;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.2s;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--brown-accent);
+        }
+
+        .btn-submit:disabled {
+            background-color: #a89f91;
+            cursor: not-allowed;
+        }
+
+        .success-message {
+            display: none;
+            padding: 20px;
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border-radius: 12px;
+            margin-top: 15px;
+            font-weight: bold;
         }
     </style>
 </head>
-
 <body>
 
-    <section class="hero">
+<div class="container">
+    <button class="lang-switch-btn" onclick="toggleLanguage()" id="langBtn">العربية</button>
 
-        <div class="balloons">
-            🎈 🎀 🎈
+    <!-- Header Section -->
+    <div class="header-container">
+        <div class="subtitle" data-en="PLEASE JOIN US IN CELEBRATING THE BIRTHDAY OF" data-ar="يسرنا دعوتكم للاحتفال بعيد ميلاد">PLEASE JOIN US IN CELEBRATING THE BIRTHDAY OF</div>
+        <h1 class="title-eng">Zahraa & Hawraa</h1>
+    </div>
+
+    <div class="content">
+        <!-- Greeting from URL Name -->
+        <div class="guest-greeting" id="greetingBox">
+            <span id="welcomePrefix">Dear</span> <span id="guestName">Guest</span>,
         </div>
 
-        <h2>يسعدنا حضوركم ومشاركتنا فرحتنا</h2>
-
-        <h1>عيد ميلاد جود 🎂</h1>
-
-        <div class="details">
-
-            <div class="detail">
-                📅 <strong>التاريخ:</strong><br>
-                الجمعة 21 أغسطس
-            </div>
-
-            <div class="detail">
-                🕖 <strong>الوقت:</strong><br>
-                7:00 مساءً
-            </div>
-
-            <div class="detail">
-                📍 <strong>المكان:</strong><br>
-                اكتبوا المكان هنا
-            </div>
-
+        <div class="event-details">
+            <p><strong><span data-en="Date:" data-ar="التاريخ:">Date:</span></strong> 28 August 2026</p>
+            <p><strong><span data-en="Time:" data-ar="الوقت:">Time:</span></strong> <span data-en="8 o'clock in the evening" data-ar="8:00 مساءً">8 o'clock in the evening</span></p>
+            <p><strong><span data-en="Location:" data-ar="المكان:">Location:</span></strong> Jaafar Sanad House</p>
         </div>
 
-        <button class="rsvp" onclick="showForm()">
-            تأكيد الحضور 💕
-        </button>
+        <div id="form">
+            <form id="rsvpForm" onsubmit="submitForm(event)">
+                <div class="form-group">
+                    <label data-en="Will you attend?" data-ar="هل ستتمكن من الحضور؟">Will you attend?</label>
+                    <div class="radio-group">
+                        <label class="radio-option active" id="opt-yes" onclick="selectAttendance(true)">
+                            <input type="radio" name="attendance" id="att-yes" value="Yes" checked> <span data-en="Yes, I'll be there ✨" data-ar="نعم، سأحضر ✨">Yes, I'll be there ✨</span>
+                        </label>
+                        <label class="radio-option" id="opt-no" onclick="selectAttendance(false)">
+                            <input type="radio" name="attendance" id="att-no" value="No"> <span data-en="Sorry, I can't 🤍" data-ar="أعتذر عن الحضور 🤍">Sorry, I can't 🤍</span>
+                        </label>
+                    </div>
+                </div>
 
+                <!-- Conditional Box for Dress Code -->
+                <div class="dress-code-container" id="dressCodeBox">
+                    <div class="dress-code-text" data-en="We would be so happy if you wear this outfit! 👕" data-ar="سنكون سعداء جداً لو ارتديتم هذه الملابس! 👕">
+                        We would be so happy if you wear this outfit! 👕
+                    </div>
+                    <!-- صورة الملابس (تتغير تلقائياً حسب الجنس) -->
+                    <img id="outfitImg" src="ChatGPT_Image_Aug_27__2026__08_22_06_AM-removebg-preview.png" alt="Dress Code Outfit" class="dress-code-img">
+                </div>
 
-        <div class="form-container" id="form">
-
-            <h3>تأكيد الحضور 💌</h3>
-
-            <form onsubmit="submitForm(event)">
-
-                <label>الاسم</label>
-                <input type="text" id="name" required>
-
-                <label>هل ستتمكن من الحضور؟</label>
-
-                <select id="attendance" required>
-                    <option value="">اختاري</option>
-                    <option value="نعم">نعم، سأحضر 🎉</option>
-                    <option value="لا">للأسف لن أتمكن من الحضور</option>
-                </select>
-
-                <label>عدد الأشخاص</label>
-                <input type="number" id="guests" min="0" value="1">
-
-                <label>أسماء الأطفال</label>
-                <textarea id="children" rows="3"></textarea>
-
-                <button class="submit" type="submit">
-                    تأكيد الحضور 💕
-                </button>
-
+                <button type="submit" class="btn-submit" id="btnSubmit" data-en="Confirm" data-ar="تأكيد">Confirm</button>
             </form>
-
-            <div id="success">
-                🎉 تم تسجيل ردك بنجاح!<br>
-                شكرًا لمشاركتنا فرحتنا 💕
-            </div>
-
         </div>
 
-    </section>
+        <div id="success" class="success-message" data-en="Thank you! Your RSVP has been received 💕" data-ar="تم استلام تأكيدك بنجاح! ننتظرك بكل حب 💕">
+            Thank you! Your RSVP has been received 💕
+        </div>
+    </div>
+</div>
 
+<script>
+    let currentLang = 'en';
+    let rawGuestName = 'Guest';
+    let selectedAttendance = 'Yes';
 
-    <script>
-
-        function showForm() {
-            document.getElementById("form").style.display = "block";
-
-            document.getElementById("form").scrollIntoView({
-                behavior: "smooth"
-            });
+    // Extract Name and Gender parameters from URL on load
+    window.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        // Name
+        const nameParam = urlParams.get('name');
+        if (nameParam && nameParam.trim() !== '') {
+            rawGuestName = decodeURIComponent(nameParam.trim());
         }
 
+        // Gender
+        const genderParam = urlParams.get('gender');
+        const outfitImg = document.getElementById('outfitImg');
+        
+        if (genderParam && genderParam.toLowerCase() === 'boy') {
+            // صورة بدلة الولد
+            outfitImg.src = 'ChatGPT_Image_Aug_27__2026__08_36_22_AM-removebg-preview.png';
+        } else {
+            // صورة بدلة البنت الوردي (افتراضي)
+            outfitImg.src = 'ChatGPT_Image_Aug_27__2026__08_22_06_AM-removebg-preview.png';
+        }
 
-        async function submitForm(event) {
+        updateGreeting();
+    });
 
-    event.preventDefault();
-
-    const name = document.getElementById("name").value;
-    const attendance = document.getElementById("attendance").value;
-    const guests = document.getElementById("guests").value;
-    const children = document.getElementById("children").value;
-
-    const data = {
-        name: name,
-        attendance: attendance,
-        guests: guests,
-        children: children
-    };
-
-    const scriptURL = "https://script.google.com/macros/s/AKfycbwVqCQjaOCWDQF6z0lmI5nJY8xIjW0Z6AjiwvigJyZaL51Z6Omvg4g9FtRWh6IWggx-/exec";
-
-    try {
-
-        await fetch(scriptURL, {
-            method: "POST",
-            body: JSON.stringify(data)
+    function showForm() {
+        document.getElementById("form").style.display = "block";
+        document.getElementById("form").scrollIntoView({
+            behavior: "smooth"
         });
-
-        document.querySelector("#form form").style.display = "none";
-
-        document.getElementById("success").style.display = "block";
-
-    } catch (error) {
-
-        alert("صار خطأ، حاولي مرة ثانية.");
-
-        console.error(error);
-
     }
-}
 
-    </script>
+    function updateGreeting() {
+        const prefix = document.getElementById('welcomePrefix');
+        const nameSpan = document.getElementById('guestName');
+        nameSpan.textContent = rawGuestName;
+
+        if (currentLang === 'en') {
+            prefix.textContent = 'Dear';
+        } else {
+            prefix.textContent = 'أهلاً بك';
+        }
+    }
+
+    function toggleLanguage() {
+        const html = document.documentElement;
+        const langBtn = document.getElementById('langBtn');
+        const elements = document.querySelectorAll('[data-en]');
+
+        if (currentLang === 'en') {
+            currentLang = 'ar';
+            html.setAttribute('lang', 'ar');
+            html.setAttribute('dir', 'rtl');
+            langBtn.textContent = 'English';
+        } else {
+            currentLang = 'en';
+            html.setAttribute('lang', 'en');
+            html.setAttribute('dir', 'ltr');
+            langBtn.textContent = 'العربية';
+        }
+
+        updateGreeting();
+
+        elements.forEach(el => {
+            el.textContent = el.getAttribute(`data-${currentLang}`);
+        });
+    }
+
+    function selectAttendance(willAttend) {
+        const yesOpt = document.getElementById('opt-yes');
+        const noOpt = document.getElementById('opt-no');
+        const dressCodeBox = document.getElementById('dressCodeBox');
+
+        if (willAttend) {
+            yesOpt.classList.add('active');
+            noOpt.classList.remove('active');
+            dressCodeBox.style.display = 'block';
+            selectedAttendance = 'Yes';
+        } else {
+            noOpt.classList.add('active');
+            yesOpt.classList.remove('active');
+            dressCodeBox.style.display = 'none';
+            selectedAttendance = 'No';
+        }
+    }
+
+    async function submitForm(event) {
+        event.preventDefault();
+
+        const submitBtn = document.getElementById("btnSubmit");
+        submitBtn.disabled = true;
+
+        const data = {
+            name: rawGuestName,
+            attendance: selectedAttendance
+        };
+
+        const scriptURL = "https://script.google.com/macros/s/AKfycbwVqCQjaOCWDQF6z0lmI5nJY8xIjW0Z6AjiwvigJyZaL51Z6Omvg4g9FtRWh6IWggx-/exec";
+
+        try {
+            await fetch(scriptURL, {
+                method: "POST",
+                mode: "no-cors",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
+
+            document.querySelector("#form form").style.display = "none";
+            document.getElementById("success").style.display = "block";
+
+        } catch (error) {
+            alert(currentLang === 'ar' ? "صار خطأ، حاولي مرة ثانية." : "An error occurred, please try again.");
+            console.error(error);
+            submitBtn.disabled = false;
+        }
+    }
+</script>
 
 </body>
 </html>
